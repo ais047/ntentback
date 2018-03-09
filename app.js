@@ -3,8 +3,11 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var html = require('html');
 
-var book = require('./routes/book');
+var plan = require('./routes/plan');
+var user = require('./routes/user');
+var provider = require('./routes/provider');
 var app = express();
 
 var mongoose = require('mongoose');
@@ -19,8 +22,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use('/books', express.static(path.join(__dirname, 'dist')));
-app.use('/book', book);
+app.use('/plans', express.static(path.join(__dirname, 'dist')));
+app.use('/plan', plan);
+app.use('/users', express.static(path.join(__dirname, 'dist')));
+app.use('/user', user);
+app.use('/providers', express.static(path.join(__dirname, 'dist')));
+app.use('/provider', provider);
+
+app.set('view engine', 'html');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,5 +48,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

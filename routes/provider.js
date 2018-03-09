@@ -1,43 +1,43 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Book = require('../models/Book.js');
+var Provider = require('../models/Provider.js');
 
-//List all books
+//List all Provider
 router.get('/', function(req, res, next) {
-  Book.find(function(err, products){
+  Provider.find(function(err, products){
     if (err) return next(err);
     res.json(products);
   });
 });
 
-//Single Book by ID
+//Single Provider by ID
 router.get('/:id', function(req,res, next){
-  Book.findById(req.params.id, function(err, post){
+  Provider.findById(req.params.id, function(err, post){
     if (err) return next(err);
     res.json(post);
   });
 });
 
-//Save Book
+//Save Provider
 router.post('/', function(req, res, next){
-  Book.create(req,body, function(err,post){
+  Provider.create(req.body, function(err,post){
     if (err) return next(err);
     res.json(post);
   });
 });
 
-//Update Book
+//Update Provider
 router.put('/:id', function(req, res, next){
-  Book.findByIdAndUpdate(req.params.id, req.bdy, function(err, post){
+  Provider.findByIdAndUpdate(req.params.id, req.bdy, function(err, post){
     if (err) return next(err);
     res.json(post);
   });
 });
 
-//Delete Book
+//Delete Provider
 router.delete(':/id', function(req, res, next){
-  Book.findByIdAndRemove(req.params.id, req.body, function(err, post){
+  Provider.findByIdAndRemove(req.params.id, req.body, function(err, post){
     if (err) return next(err);
     res.json(post);
   });
