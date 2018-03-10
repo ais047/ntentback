@@ -18,8 +18,16 @@
           Payment info stuff<br>
           Find Providers and their plans<br>
           Settings -> Move Edit and Delete here<br>
-
         </template>
+
+        <b-table dark striped hover :items="plans" :fields="fields">
+          <template slot="actions" scope="row">
+            
+            <b-btn size="sm" @click.stop="details(row.item._id)"></b-btn>
+            
+          </template>
+        </b-table>
+
         <hr class="my-4">
         <p>
           Updated Date: {{user.updated_date}}
@@ -39,10 +47,24 @@ export default {
   name: 'ShowUser',
   data () {
     return {
-      user: []
+      fields: {
+        title: { label: 'Title', sortable: true, 'class': 'text-center' },
+        date: { label: 'Date', sortable: true, 'class': 'text-center' },
+        time: { label: 'Time', 'class': 'text-center' },
+        provider: { label: 'Provider', 'class' : 'text-center'}
+      },
+      user: [],
+      errors: []
     }
   },
   created () {
+    axios.get(`http://localhost:3000/plan`)
+    .then(response => {
+      this.plans = response.data
+    })
+    .catch(e => {
+      this.errors.push(e)
+    }),
     axios.get(`http://localhost:3000/user/` + this.$route.params.id)
     .then(response => {
       this.user = response.data

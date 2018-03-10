@@ -17,7 +17,7 @@
                   horizontal
                   :label-cols="4"
                   breakpoint="md"
-                  label="Enter Date">
+                  label="Enter Date (Month - Date - Year)">
           <b-form-input id="date" :state="state" v-model.trim="plan.date"></b-form-input>
         </b-form-group>
         <b-form-group id="fieldsetHorizontal"
