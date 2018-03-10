@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import CreateUser from '@/components/CreateUser'
-// import ListUser from '@/components/ListUser'
-// import EditUser from '@/components/EditUser'
+import ListUser from '@/components/ListUser'
+import EditUser from '@/components/EditUser'
 import DashboardUser from '@/components/DashboardUser'
 // import CreateProvider from '@/components/CreateProvider'
 import CreatePlan from '@/components/CreatePlan'
@@ -26,14 +26,24 @@ export default new Router({
       component: CreateUser
     },
     {
-      path: '/',
+      path: '/create-plan',
       name: 'create-plan',
       component: CreatePlan
-    },
+    },    
     {
-      path: '/dashboard',
+      path: '/dashboard/:id',
       name: 'dashboard-user',
       component: DashboardUser
+    },
+    {
+      path: '/list-user',
+      name: 'list-user',
+      component: ListUser
+    },
+    {
+      path: '/edit-user',
+      name: 'edit-user',
+      component: EditUser
     }
   ]
 })

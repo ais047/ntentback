@@ -12,7 +12,7 @@ var app = express();
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/mean-angular5', {
+mongoose.connect('mongodb://localhost/4ntent', {
     promiseLibrary: require('bluebird')})
   .then(() => console.log('connection successful'))
   .catch((err) => console.log(err));
@@ -28,8 +28,6 @@ app.use('/users', express.static(path.join(__dirname, 'dist')));
 app.use('/user', user);
 app.use('/providers', express.static(path.join(__dirname, 'dist')));
 app.use('/provider', provider);
-
-app.set('view engine', 'html');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -31,7 +31,7 @@
                   horizontal
                   :label-cols="4"
                   breakpoint="md"
-                  label="Enter Publisher">
+                  label="Enter Password">
           <b-form-input id="password" :state="state" v-model.trim="user.password"></b-form-input>
         </b-form-group>
         <b-button type="submit" variant="primary">Save</b-button>
