@@ -27,22 +27,22 @@ export default new Router({
     },
     {
       path: '/create-plan',
-      name: 'create-plan',
+      name: 'CreatePlan',
       component: CreatePlan
     },    
     {
       path: '/dashboard/:id',
-      name: 'dashboard-user',
+      name: 'DashboardUser',
       component: DashboardUser
     },
     {
       path: '/list-user',
-      name: 'list-user',
+      name: 'ListUser',
       component: ListUser
     },
     {
-      path: '/edit-user',
-      name: 'edit-user',
+      path: '/edit-user/:id',
+      name: 'EditUser',
       component: EditUser
     }
   ]

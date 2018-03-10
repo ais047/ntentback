@@ -7,7 +7,7 @@
       </h2>
       <b-table striped hover :items="users" :fields="fields">
         <template slot="actions" scope="row">
-          <b-btn size="sm" @click.stop="details(row.item)">Details</b-btn>
+          <b-btn size="sm" v-on:click="details(row.item._id)"></b-btn>
         </template>
       </b-table>
       <ul v-if="errors && errors.length">
@@ -30,7 +30,8 @@ export default {
       fields: {
         first_name: { label: 'First Name', sortable: true, 'class': 'text-center' },
         last_name: { label: 'Last Name', sortable: true, 'class': 'text-center' },
-        email: { label: 'email', 'class': 'text-center' }
+        email: { label: 'email', 'class': 'text-center' },
+        _id: { label: 'id', 'class' : 'text-center'}
       },
       users: [],
       errors: []
@@ -46,10 +47,10 @@ export default {
     })
   },
   methods: {
-    details (user) {
+    details (userid) {
       this.$router.push({
-        name: 'DashboardUser',
-        params: { id: user._id }
+        name: 'DashboardUser/' + userid,
+        params: { id: userid }
       })
     }
   }
