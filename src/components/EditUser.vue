@@ -66,7 +66,7 @@ export default {
       axios.put(`http://localhost:3000/user/` + this.$route.params.id, this.user)
       .then(response => {
         this.$router.push({
-          name: 'ShowUser',
+          name: 'EditUser',
           params: { id: this.$route.params.id }
         })
       })
