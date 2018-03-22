@@ -32,9 +32,16 @@
                   :label-cols="4"
                   breakpoint="md"
                   label="Enter Password">
-          <b-form-input id="password" :state="state" v-model.trim="user.password"></b-form-input>
+          <b-form-input id="password" :state="state" v-model.trim="user.password"></b-form-input>  
         </b-form-group>
-        <b-button type="submit" variant="primary">Save</b-button>
+          <br>
+         <label for="agree">
+          <input id="agree" type="checkbox" value="agree" v-model="checked"/>
+          The terms of service is listed at <a href src="/"> NEED TOS PAGE </a>
+          <br>
+          Do you accept the terms of Service?
+        </label><br>
+        <b-button :disabled="!checked" type="submit" variant="primary">Save</b-button>
       </b-form>
     </b-col>
   </b-row>
@@ -48,7 +55,8 @@ export default {
   name: 'CreateUser',
   data () {
     return {
-      user: {}
+      user: {},
+      checked: false
     }
   },
   methods: {
