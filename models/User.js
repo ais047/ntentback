@@ -1,11 +1,22 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const crypto = require('crypto');
 
-var UserSchema = new mongoose.Schema({
-    first_name: String,
-    last_name: String,
-    email: String,
-    password: String,
-    //Password needs to be salted with crypto which is to be added in future
+let UserSchema = new mongoose.Schema({
+    first_name: {
+        type: String,
+        required: true
+    },
+    last_name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    hash: String,
+    salt: String,
     paymentinfo: {
         //To be updated after cryptos integrated
     },
