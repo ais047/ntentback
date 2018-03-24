@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var Provider = require('./Provider');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const Provider = require('./Provider');
 
-var PlanSchema = new mongoose.Schema({
+let PlanSchema = new mongoose.Schema({
     title: String,
     date: Date,
     time: String,

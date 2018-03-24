@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var ProviderSchema = new mongoose.Schema({
+let ProviderSchema = new mongoose.Schema({
     first_name: String,
     last_name: String,
     email: String,
