@@ -22,6 +22,17 @@ let UserSchema = new mongoose.Schema({
     },
     schedule: [],
     updated_date: { type: Date, default: Date.now }
-})
+});
+
+UserSchema.methods.setPassword = function(password){
+    this.salt = crypto.randomBytes(16).toString('hex');
+    this.hash = crytpo.pbkdf2Sync(password, this.salt, 1000, 64,
+    'sha512').toString('hex');
+};
+
+UserSchema.methods.validPassword = function(password) {
+    var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
+    return this.hash === hash;
+  };
 
 module.exports = mongoose.model('User', UserSchema)
